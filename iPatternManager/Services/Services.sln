@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Services", ".", "{D650D522-6CC1-4BC1-9967-554C084502BC}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "3.5"
+		ProjectReferences = "{DC7F58FE-2BAA-4719-927A-AF6D7C1E6868}|BL.dll;{6C48E71B-9A5C-489E-B6A3-8C8BEA98C029}|DAL.dll;{2EE6FAC6-B99D-4A9E-A771-D63B10F28B3F}|DTL.dll;{685F40CE-A750-4EFA-BE2B-B9F141601C4A}|Common.dll;{37709AA9-7361-4C66-89D2-B64B1B7926CD}|IQProxy.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/Services"
+		Debug.AspNetCompiler.PhysicalPath = "..\Services\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Services\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/Services"
+		Release.AspNetCompiler.PhysicalPath = "..\Services\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Services\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "57187"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "..\iPattern\iPatternManager\BL\BL.csproj", "{DC7F58FE-2BAA-4719-927A-AF6D7C1E6868}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IQProxy", "..\..\ibrain\v4\client\IQProxy\IQProxy\IQProxy.csproj", "{37709AA9-7361-4C66-89D2-B64B1B7926CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTL", "..\iPattern\iPatternManager\DTL\DTL.csproj", "{2EE6FAC6-B99D-4A9E-A771-D63B10F28B3F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D650D522-6CC1-4BC1-9967-554C084502BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D650D522-6CC1-4BC1-9967-554C084502BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D650D522-6CC1-4BC1-9967-554C084502BC}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{D650D522-6CC1-4BC1-9967-554C084502BC}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{DC7F58FE-2BAA-4719-927A-AF6D7C1E6868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC7F58FE-2BAA-4719-927A-AF6D7C1E6868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC7F58FE-2BAA-4719-927A-AF6D7C1E6868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC7F58FE-2BAA-4719-927A-AF6D7C1E6868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37709AA9-7361-4C66-89D2-B64B1B7926CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37709AA9-7361-4C66-89D2-B64B1B7926CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37709AA9-7361-4C66-89D2-B64B1B7926CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37709AA9-7361-4C66-89D2-B64B1B7926CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE6FAC6-B99D-4A9E-A771-D63B10F28B3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE6FAC6-B99D-4A9E-A771-D63B10F28B3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE6FAC6-B99D-4A9E-A771-D63B10F28B3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE6FAC6-B99D-4A9E-A771-D63B10F28B3F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

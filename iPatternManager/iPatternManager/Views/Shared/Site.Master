@@ -1,0 +1,96 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
+    <link href="/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+
+    <script src="/Scripts/MicrosoftAjax.js" type="text/javascript"></script>
+
+    <script src="/Scripts/MicrosoftMvcAjax.js" type="text/javascript"></script>
+
+    <script src="/Scripts/jquery-1.5.1.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery-datehelper.js" type="text/javascript"></script>
+
+    <script src="/Scripts/ui/jquery.ui.core.js" type="text/javascript"></script>
+    <script src="/Scripts/ui/jquery.ui.widget.js" type="text/javascript"></script>
+    <script src="/Scripts/ui/jquery.ui.autocomplete.js" type="text/javascript"></script>
+
+   <script src="/Scripts/ui/jquery.ui.dialog.js" type="text/javascript"></script>
+    <script src="/Scripts/iPatternClientLibrary.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <div class="page">
+        <div id="header">
+            <div id="title">
+                <h1>
+                    iPattern Portal v2.0</h1>
+            </div>
+            <div id="logindisplay">
+                <% Html.RenderPartial("LogOnUserControl"); %>
+            </div>
+            <div style="float: right;">
+                <%if (Membership.GetUser() != null)
+                    Html.RenderPartial("AreaControl", iPatternManager.ContextManager.Current.AreaListItems);%>
+            </div>
+            <div id="menucontainer">
+                <div style="float: right;" id="tabMenu">
+                    <div class="tab" onclick="location.href='/Home/Index'">
+                        <div class="tabLink">
+                            <%= Html.ActionLink("Hjem", "Index", "Home")%></div>
+                    </div>
+                    <div class="tab" onclick="location.href='/Message/Index'">
+                        <div class="tabLink">
+                            <%= Html.ActionLink("Beskedermapper", "Index/", "Message")%></div>
+                    </div>
+                   <div class="tab" onclick="location.href='/Area/Index'">
+                      <div style="float: left; margin-right: 4px;">
+                         <img src="/Content/Images/Start-Menu-Search-icon24.png" alt="Search" /></div>
+                      <div style="float: left; margin-top: -5px;">
+                         <%= Html.ActionLink("Søgning", "Index/", "Search")%></div>
+                   </div>                    
+                    <div class="tab" onclick="location.href='/Word/Index'">
+                        <div class="tabLink">
+                            <%= Html.ActionLink("Ordhåndtering", "Index", "Word")%></div>
+                    </div>
+                    <div class="tab" onclick="location.href='/Analysis/Index'">
+                        <div class="tabLink">
+                            <%= Html.ActionLink("Analyser", "Index", "Analysis")%></div>
+                    </div>
+                    <div class="tab" onclick="location.href='/Area/Index'">
+                        <div style="float: left; margin-right: 4px;">
+                            <img src="/Content/Images/lock-icon24.png" alt="" /></div>
+                        <div style="float: left; margin-top: -5px;">
+                            <%= Html.ActionLink("Områder", "Index/", "Area")%></div>
+                    </div>
+                    <div class="tab" onclick="location.href='/User/Index'">
+                        <div style="float: left; margin-right: 4px;">
+                            <img src="/Content/Images/lock-icon24.png" alt="" /></div>
+                        <div style="float: left; margin-top: -5px;">
+                            <%= Html.ActionLink("Brugere", "Index/", "User")%></div>
+                    </div>
+                    <div class="tab" onclick="location.href='/Home/About'">
+                        <div class="tabLink">
+                            <%= Html.ActionLink("Om iPattern", "About", "Home")%></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <div>
+                <asp:ContentPlaceHolder ID="BreadCrumb" runat="server" />
+            </div>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            <div id="footer">
+            </div>
+        </div>
+       <div id="errorMessagePopup" style="overflow: scroll; width: 750px; height: 450px;">
+       </div>
+    </div>
+</body>
+</html>

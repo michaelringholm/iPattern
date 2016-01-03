@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="iPattern" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.1.100\sqlexpress2008;Initial Catalog=iPattern;Persist Security Info=True;User ID=sa" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="iPatternConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.analysis_result" Member="analysis_results">
+    <Type Name="analysis_result">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="analysis_input_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="information_type_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="is_read" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="event_time" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="analysis_result_analysis_result_item" Member="analysis_result_items" ThisKey="id" OtherKey="analysis_result_id" Type="analysis_result_item" />
+      <Association Name="analysis_result_meta_data_value" Member="meta_data_values" ThisKey="id" OtherKey="analysis_result_id" Type="meta_data_value" />
+      <Association Name="analysis_input_analysis_result" Member="analysis_input" ThisKey="analysis_input_id" OtherKey="id" Type="analysis_input" IsForeignKey="true" />
+      <Association Name="information_type_analysis_result" Member="information_type" ThisKey="information_type_id" OtherKey="id" Type="information_type" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.analysis_input" Member="analysis_inputs">
+    <Type Name="analysis_input">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="text_input" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="source_key1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="source_key2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="area_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="event_time" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="analysis_input_analysis_result" Member="analysis_results" ThisKey="id" OtherKey="analysis_input_id" Type="analysis_result" />
+      <Association Name="analysis_input_input_meta_data" Member="input_meta_datas" ThisKey="id" OtherKey="analysis_input_id" Type="input_meta_data" />
+      <Association Name="analysis_input_input_word_header" Member="input_word_headers" ThisKey="id" OtherKey="analysis_input_id" Type="input_word_header" />
+    </Type>
+  </Table>
+  <Table Name="dbo.analysis_result_item" Member="analysis_result_items">
+    <Type Name="analysis_result_item">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="analysis_result_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="word" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="weight" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="information_type_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="event_time" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="analysis_result_analysis_result_item" Member="analysis_result" ThisKey="analysis_result_id" OtherKey="id" Type="analysis_result" IsForeignKey="true" />
+      <Association Name="information_type_analysis_result_item" Member="information_type" ThisKey="information_type_id" OtherKey="id" Type="information_type" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.input_meta_data" Member="input_meta_datas">
+    <Type Name="input_meta_data">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="meta_value" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="analysis_input_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="event_time" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="analysis_input_input_meta_data" Member="analysis_input" ThisKey="analysis_input_id" OtherKey="id" Type="analysis_input" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.input_word_header" Member="input_word_headers">
+    <Type Name="input_word_header">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="word" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="word_count" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="analysis_input_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="analysis_input_input_word_header" Member="analysis_input" ThisKey="analysis_input_id" OtherKey="id" Type="analysis_input" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.meta_data_key" Member="meta_data_keys">
+    <Type Name="meta_data_key">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="regex" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="information_type_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="event_time" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="meta_data_key_meta_data_value" Member="meta_data_values" ThisKey="id" OtherKey="meta_data_key_id" Type="meta_data_value" />
+      <Association Name="information_type_meta_data_key" Member="information_type" ThisKey="information_type_id" OtherKey="id" Type="information_type" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.meta_data_value" Member="meta_data_values">
+    <Type Name="meta_data_value">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="meta_value" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="meta_data_key_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="analysis_result_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="event_time" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="analysis_result_meta_data_value" Member="analysis_result" ThisKey="analysis_result_id" OtherKey="id" Type="analysis_result" IsForeignKey="true" />
+      <Association Name="meta_data_key_meta_data_value" Member="meta_data_key" ThisKey="meta_data_key_id" OtherKey="id" Type="meta_data_key" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.information_type" Member="information_types">
+    <Type Name="information_type">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="possible_limit" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="certain_limit" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="parent_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="area_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="event_time" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="information_type_analysis_result" Member="analysis_results" ThisKey="id" OtherKey="information_type_id" Type="analysis_result" />
+      <Association Name="information_type_analysis_result_item" Member="analysis_result_items" ThisKey="id" OtherKey="information_type_id" Type="analysis_result_item" />
+      <Association Name="information_type_meta_data_key" Member="meta_data_keys" ThisKey="id" OtherKey="information_type_id" Type="meta_data_key" />
+      <Association Name="information_type_information_type" Member="information_type2" ThisKey="id" OtherKey="id" Type="information_type" Cardinality="One" />
+      <Association Name="information_type_information_type" Member="information_type1" ThisKey="id" OtherKey="id" Type="information_type" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
